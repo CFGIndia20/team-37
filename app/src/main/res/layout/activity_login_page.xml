@@ -62,7 +62,7 @@
         android:layout_marginBottom="59dp"
         android:editable="true"
         android:ems="10"
-        android:hint="Enter Your Username"
+        android:hint="Enter Your Patient ID"
         android:inputType="textPersonName"
         android:paddingLeft="20dp"
         android:textSize="24sp"
