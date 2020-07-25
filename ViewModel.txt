@@ -1,0 +1,54 @@
+public class TextTranslationViewModel extends BaseViewModel<ITextInterface> {
+
+    private static final String TAG = TextTranslationViewModel.class.getSimpleName();
+
+    private final MutableLiveData<YandexResponse> mYandexResponse = new MutableLiveData<>();
+
+    private final MutableLiveData<Boolean> hasSavedText = new MutableLiveData<>();
+
+
+    public TextTranslationViewModel(DataManager dataManager) {
+        super(dataManager);
+    }
+
+
+    public MutableLiveData<YandexResponse> getYandexResponse(){
+        return mYandexResponse;
+    }
+
+
+    public void makeApiTranslationCall(String original, String target){
+        setIsLoading(true);
+        Observable<YandexResponse> returnObject = getDataManager().getTranslatedTextUsingYandexApi(ApiEndPoint.YANDEX_API_KEY, original, target);
+        getCompositeDisposable().add(returnObject.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<YandexResponse>() {
+                    @Override
+                    public void accept(YandexResponse yandexResponse) throws Exception {
+                        setIsLoading(false);
+                        Log.d(TAG, "The value of the return type is " + yandexResponse.getText());
+                        mYandexResponse.setValue(yandexResponse);
+                    }
+                }, throwable -> {
+                    setIsLoading(false);
+                    Log.d(TAG, "Error has occurred ");
+                })
+        );
+    }
+
+
+    public void saveTranslatedText(TranslationObject translationObject){
+        Observable<Boolean> isTextSaved = getDataManager().addTranslationObject(translationObject);
+        getCompositeDisposable().add(isTextSaved.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<Boolean>() {
+                    @Override
+                    public void accept(Boolean aBoolean) throws Exception {
+                        Log.d(TAG, "New data inserted ");
+                    }
+                }, throwable -> {
+                    Log.d(TAG, "Error has occurred ");
+                })
+        );
+    }
+}
