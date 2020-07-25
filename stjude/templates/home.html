@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block content %}
-  <div id="app" class="container top-padding">
+  <div id="app" class="chat-popup">
   	<div class="row">
   		<div class="col-md-12">
   			<div class="card col-md-6" v-for="message in messages" v-bind:class="{ 'user-message': message.user,  'chat-message': message.chat_bot, 'offset-md-6': message.chat_bot}">
@@ -21,6 +21,18 @@
   			<textarea class="form-control" v-bind:placeholder="placeholder" v-model="input" v-bind:class="{ 'border-danger': send_blank}" v-on:change="check_content"></textarea>
   			<i class="fas fa-arrow-circle-right send-btn" v-on:click="add_message"></i>
   		</div>
-  	</div>
+	  </div>
+	  <button type="submit" class="btn">Send</button>
+	<button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+	
+	<script>
+		function openForm() {
+		  document.getElementById("myForm").style.display = "block";
+		}
+		
+		function closeForm() {
+		  document.getElementById("myForm").style.display = "none";
+		}
+		</script>
   </div>
 {% endblock %}
