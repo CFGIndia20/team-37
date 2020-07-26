@@ -75,9 +75,18 @@ def login(request):
             if str(adm["username"]) == username and str(adm["password"]) == password:
                 # global session_username
                 # session_username = username
-                return render(request, 'admin-options.html')
+                return render(request, 'loggedin.html')
+
+        donor = db.child('donor').get().val()
+        donor = dict(donor)
+        for k,don in donor.items():
+            if str(don["username"]) == username and str(don["password"]) == password:
+                # global session_username
+                # session_username = username
+                # return render(request, 'admin-options.html')
+                return HttpResponse("<h1>HI</h1>")
         
-        return HttpResponse("<h5>Error<h5>")
+        return HttpResponse("<h1>Error<h1>")
         # global session_username
         # session_username = username
         # return redirect(to='http://127.0.0.1:8000/admin-option')
