@@ -33,6 +33,9 @@ def index(request):
         return render(request, 'index.html', {'username': session_username})
     return render(request,'index.html',{'username':session_username})
 
+def chatbot(request):
+    return render(request, "home.html")
+
 @csrf_exempt
 def get_response(request):
     response = {'status': None}
@@ -40,7 +43,7 @@ def get_response(request):
     if request.method == 'POST':
         data = json.loads(request.body)
         message = data['message']
-        # print(message)
+        print(message)
 
         chat_response = chatbot_response(message)
         response['message'] = {'text': chat_response, 'user': False, 'chat_bot': True}
@@ -56,18 +59,31 @@ def get_response(request):
 
 #Login Form
 def login(request):
-    try:
+    if request.method == "POST":
         login_data = LoginForm(request.POST)
-        username = login_data.data['username']
+        username = login_data.data['login']
         password = login_data.data['password']
-        # user = get_object_or_404(User, username = username, password = password)
-        print(username)
-        global session_username
-        session_username = username
-        # return redirect(to='http://127.0.0.1:8000/')
-        return redirect(to='http://127.0.0.1:8000/admin-option')
-    except:
-        return render(request, 'e403.html')
+
+        print(username,password)
+
+        admins = db.child('admin').get().val()
+
+        print(admins)
+        admins = dict(admins)
+        for k,adm in admins.items():
+
+            print(adm)
+
+            if adm["username"] == username and adm["password"] == password:
+                global session_username
+                session_username = username
+                return render(request, 'admin-options.html')
+        return HttpResponse("<h5>Error<h5>")
+        # global session_username
+        # session_username = username
+        # return redirect(to='http://127.0.0.1:8000/admin-option')
+    else:
+        return render(request, 'login.html')
 
 def optionChosen(request):
     if request.method == "POST":
@@ -91,19 +107,6 @@ def optionChosen(request):
                 cent = cen
                 break
         print(cent)
-        # for adm in admins:
-        #     print(adm)
-        #     temp = db.child('admin').child(adm)
-        #     if temp.child('admin_id').get().val() == 1:
-        #         center_id = temp.child('center_id').get().val()
-        #         break
-        # print(center_id)
-        # centers = db.child('centers').get().val()
-        # center_ref = -1
-        # for cen in centers:
-        #     center_ref = db.child('centers').child(cen)
-        #     if center_ref.child('center_id').get().val() == center_id:
-        #         break
         if opt == "add":
             unit = cent["unit"]
             temp = {}
@@ -128,6 +131,5 @@ def optionChosen(request):
     else:
         return render(request, 'admin-options.html')
 
-
-
-
+# def loginPage(request):
+#     return render(request, 'login.html')
