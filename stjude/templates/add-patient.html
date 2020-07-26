@@ -7,25 +7,7 @@
     <meta charset="utf-8">
 
 	<link href="//fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-    <script>
-        const div = document.createElement('div');
-        div.innerText = '<%- JSON.stringify(path1) %>'
-        var fpath=JSON.parse(div.innerHTML);
-        var available_rooms=[];
-        for(let i=1;i<fpath.length;i++)
-        {
-            if(fpath[i]["status"]=='A')
-                available_rooms.push(fpath[i]["room"]);
-        }
-        for(let i=1;i<available_rooms.length;i++){
-            var address="";
-            address="<b> Room No.: </b>"+available_rooms[i]+"<br>";
-            var myCol = $('<div class="col-sm-8 col-md-4 pb-4  d-flex "></div> ');
-            var myPanel = $('<div class="card w-100" ><div class="card-block"><h4 class="card-header text-center" > </h4><p class="card-text text-center">'+address+'</p></div></div>');
-            myPanel.appendTo(myCol);
-            myCol.appendTo('#contentPanel');
-        }
-    </script>
+
 </head>
 
 

@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 import json
 from django.views.decorators.csrf import csrf_exempt
-# from chatbot.chatbot_model_runner import *
+from chatbot.chatbot_model_runner import *
 from datetime import date
 from .forms import LoginForm, OptionForm, PatientForm,CheckoutForm
 
@@ -43,9 +43,17 @@ def get_response(request):
     if request.method == 'POST':
         data = json.loads(request.body)
         message = data['message']
-        print(message)
+        # print(message)
 
         chat_response = chatbot_response(message)
+        patient_count = chatbot_response("patient count")
+        # print(chatbot_response)
+        # print(chat_response)
+        if chatbot_response==patient_count:
+            print("AAAA")
+            chat_response=str(return_patient_count())
+        elif chatbot_response=="patient_phone_number":
+            chat_response=return_patient_phone(request)
         response['message'] = {'text': chat_response, 'user': False, 'chat_bot': True}
         response['status'] = 'ok'
 
@@ -56,6 +64,51 @@ def get_response(request):
         json.dumps(response),
         content_type = "application/json"
     )
+
+def return_patient_count():
+
+    patients=db.child("patients").get().val()
+    print(patients)
+    count=0
+    for i in patients:
+        count+=1
+    return count
+#patient
+def return_patient_phone(request):
+    found=False
+    patientid=-1
+    for word in request.split():
+        if word.isdigit():
+            if found==False:
+                patientid=word
+            else:
+                return "please ask again with a valid patient id"
+    if patientid==-1:
+        return "please ask again with a patient id"
+    patients=db.child("patients").get().val()
+    for i in patients:
+        if patientid==db.child("patients").child(i).child('id').get().val():
+            return str(db.child("patients").child(i).child('phone').get().val())
+    return "patient id not found in records"
+# def get_response(request):
+#     response = {'status': None}
+
+#     if request.method == 'POST':
+#         data = json.loads(request.body)
+#         message = data['message']
+#         print(message)
+
+#         chat_response = chatbot_response(message)
+#         response['message'] = {'text': chat_response, 'user': False, 'chat_bot': True}
+#         response['status'] = 'ok'
+
+#     else:
+#         response['error'] = 'no post data found'
+
+#     return HttpResponse(
+#         json.dumps(response),
+#         content_type = "application/json"
+#     )
 
 #Login Form
 def login(request):
@@ -119,8 +172,10 @@ def checkout(request):
     pat = CheckoutForm(request.POST)
     patient_id = pat.data['patient_id']
     patients_ref=db.child('patients').get().val()
+    patients_ref = dict(patients_ref)
     center_id=-1
     for patient in patients_ref:
+        print(patient)
         if(patient["id"]==patient_id):
             db.child('patients').update({patient+'/exitdate':date.today()})
             center_id=patient['center_id']
@@ -156,13 +211,15 @@ def optionChosen(request):
                 cent = cen
                 break
         print(cent)
+
+        
         if opt == "add":
             unit = cent["unit"]
             temp = {}
             for k,v in enumerate(unit):
                 temp[k] = v
             unit = temp
-            return render(request, 'add-patient.html',{'units' : unit})
+            return render(request, 'available.html',{'units' : unit})
         elif opt == "checkout":
             return render(request, 'checkout-patient.html')
         elif opt == "view":

@@ -1,9 +1,9 @@
 <html>
     <body>
-        <form method="POST" action="http://127.0.0.1:8000/checkout-patient/">
-            <input id="patient_id" placeholder="enter unit id you want to checkout"> 
+        <form method="POST" action="http://127.0.0.1:8000/checkout-patient/">{% csrf_token %}
+            <input id="patient_id" name="patient_id" placeholder="enter unit id you want to checkout"> 
         </input>
-        <submit>Submit</submit>
+        <input type="submit">Submit</input>
         </form>
     </body>
 </html>

@@ -51,8 +51,8 @@
 
       <nav class="nav-menu d-none d-lg-block">
         <ul>
-          <li class="active"><a href="index.html">Home</a></li>
-          <li><a href="#">Logout</a></li>
+          <li class="active"><a href="http://127.0.0.1:8000/">Home</a></li>
+          <!-- <li><a href="#">Logout</a></li> -->
 
           </li>
 
@@ -72,12 +72,18 @@
       </div>
     </div>
   </section>
-
-  <button a href="#" type="button" class="btn btn-primary btn-lg">Checkin</button>
+  <form action="http://127.0.0.1:8000/option-chosen/" method="post">{% csrf_token %}
+    
+    <button type="submit" name="opt" class="btn btn-primary btn-lg" value="add">Checkin</button>
+    <button type="submit" name="opt" class="btn btn-secondary btn-lg" value="checkout">Checkout</button>
+    <br>
+    <button type="submit" name="opt" class="btn btn-primary btn-lg" value="view">Unit Status</button>
+  </form>
+  <!-- <button a href="#" type="button" class="btn btn-primary btn-lg">Checkin</button>
 <button a href="#" type="button" class="btn btn-secondary btn-lg">Checkout</button>
 <br>
-<button a href="#" type="button" class="btn btn-primary btn-lg">Unit Status</button>
-<button a href="#" type="button" class="btn btn-secondary btn-lg">Edit Feedback form</button>
+<button a href="#" type="button" class="btn btn-primary btn-lg">Unit Status</button> -->
+<!-- <button a href="#" type="button" class="btn btn-secondary btn-lg">Edit Feedback form</button> -->
   </main><!-- End #main -->
   <div id="preloader"></div>
   <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>

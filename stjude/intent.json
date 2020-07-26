@@ -33,8 +33,319 @@
         },
         {
                 "tag": "5",
-                "patterns": [],
+                "patterns": [""],
                 "responses": ["sorry, can't understand you. I ll join you to our helpline."]
-        }
+        },
+        {"tag": "6",
+                "patterns": ["How are you?" ],
+                "responses": ["I am fine"]
+               },
+               {"tag": "7",
+                "patterns": ["what are you doing"],
+                "responses": ["I'm trying to help  you out"]
+               },
+               {"tag": "8",
+                       "patterns": ["Can i know my email address?"],
+                       "responses": ["You can find it in my profile details' place."]
+                      },
+               {"tag": "9",
+                       "patterns": ["what is your name?"],
+                       "responses": ["I'm suzanne,your help assistant right now"]
+               },
+               {
+                       "tag": "10",
+                       "patterns": ["what is your age?"],
+                       "responses": ["I'm pretty old than i seem to be"]
+               },
+               {"tag": "greeting",
+                "patterns": ["Hi", "How are you", "Is anyone there?", "Hello", "Good day"],
+                "responses": ["Hello, thanks for visiting", "Good to see you again", "Hi there, how can I help?"]
+               },
+               {"tag": "goodbye",
+                "patterns": ["Bye", "See you later", "Goodbye"],
+                "responses": ["See you later, thanks for visiting", "Have a nice day", "Bye! Come back again soon."]
+               },
+               {"tag": "thanks",
+                "patterns": ["Thanks", "Thank you", "That's helpful"],
+                "responses": ["Happy to help!", "Any time!", "My pleasure"]
+               },
+               {"tag": "hours",
+                "patterns": ["What hours are you open?", "What are your hours?", "When are you open?" ],
+                "responses": ["We're open every day 9am-9pm", "Our hours are 9am-9pm every day"]
+               },
+               {"tag": "1",
+                "patterns": ["Do you take credit cards?", "Do you accept Mastercard?", "Are you cash only?" ],
+                "responses": ["We accept VISA, Mastercard and AMEX", "We accept most major credit cards"]
+               },
+               {"tag": "2",
+                "patterns": ["Are you open today?", "When do you open today?", "What are your hours today?"],
+                "responses": ["We're open every day from 9am-9pm", "Our hours are 9am-9pm every day"]
+               },
+               {"tag": "3",
+                       "patterns": ["How do i return order?"," what is the process to return my order"],
+                       "responses": ["You can return it from orders place in the menu and we will send our delivery person to collect it."]
+                      },
+               {"tag": "4",
+                       "patterns": ["what is the process to refund?","when will i get refund"],
+                       "responses": ["once returned or canceled, we will initialise refund in 5-7 days to your purchased account"]
+               },
+               {
+                       "tag": "5",
+                       "patterns": ["what?"],
+                       "responses": ["sorry, can't understand you. I ll join you to our helpline."]
+               },
+               {"tag": "6",
+                       "patterns": ["How are you?" ],
+                       "responses": ["I am fine"]
+                      },
+                      {"tag": "7",
+                       "patterns": ["what are you doing"],
+                       "responses": ["I'm trying to help  you out"]
+                      },
+                      {"tag": "8",
+                              "patterns": ["Can i know my email address?"],
+                              "responses": ["You can find it in my profile details' place."]
+                             },
+                      {"tag": "9",
+                              "patterns": ["what is your name?"],
+                              "responses": ["I'm suzanne,your help assistant right now"]
+                      },
+                      {
+                              "tag": "10",
+                              "patterns": ["what is your age?"],
+                              "responses": ["I'm pretty old than i seem to be"]
+                      },
+                      {"tag": "greeting",
+                        "patterns": ["Hi", "How are you", "Is anyone there?", "Hello", "Good day"],
+                        "responses": ["Hello, thanks for visiting", "Good to see you again", "Hi there, how can I help?"]
+                       },
+                       {"tag": "goodbye",
+                        "patterns": ["Bye", "See you later", "Goodbye"],
+                        "responses": ["See you later, thanks for visiting", "Have a nice day", "Bye! Come back again soon."]
+                       },
+                       {"tag": "thanks",
+                        "patterns": ["Thanks", "Thank you", "That's helpful"],
+                        "responses": ["Happy to help!", "Any time!", "My pleasure"]
+                       },
+                       {"tag": "hours",
+                        "patterns": ["What hours are you open?", "What are your hours?", "When are you open?" ],
+                        "responses": ["We're open every day 9am-9pm", "Our hours are 9am-9pm every day"]
+                       },
+                       {"tag": "1",
+                        "patterns": ["Do you take credit cards?", "Do you accept Mastercard?", "Are you cash only?" ],
+                        "responses": ["We accept VISA, Mastercard and AMEX", "We accept most major credit cards"]
+                       },
+                       {"tag": "2",
+                        "patterns": ["Are you open today?", "When do you open today?", "What are your hours today?"],
+                        "responses": ["We're open every day from 9am-9pm", "Our hours are 9am-9pm every day"]
+                       },
+                       {"tag": "3",
+                               "patterns": ["How do i return order?"," what is the process to return my order"],
+                               "responses": ["You can return it from orders place in the menu and we will send our delivery person to collect it."]
+                              },
+                       {"tag": "4",
+                               "patterns": ["what is the process to refund?","when will i get refund"],
+                               "responses": ["once returned or canceled, we will initialise refund in 5-7 days to your purchased account"]
+                       },
+                       {
+                               "tag": "5",
+                               "patterns": ["what?"],
+                               "responses": ["sorry, can't understand you. I ll join you to our helpline."]
+                       },
+                       {"tag": "6",
+                               "patterns": ["How are you?" ],
+                               "responses": ["I am fine"]
+                              },
+                              {"tag": "7",
+                               "patterns": ["what are you doing"],
+                               "responses": ["I'm trying to help  you out"]
+                              },
+                              {"tag": "8",
+                                      "patterns": ["Can i know my email address?"],
+                                      "responses": ["You can find it in my profile details' place."]
+                                     },
+                              {"tag": "9",
+                                      "patterns": ["what is your name?"],
+                                      "responses": ["I'm suzanne,your help assistant right now"]
+                              },
+                              {
+                                      "tag": "10",
+                                      "patterns": ["what is your age?"],
+                                      "responses": ["I'm pretty old than i seem to be"]
+                              },
+                              {"tag": "greeting",
+                                "patterns": ["Hi", "How are you", "Is anyone there?", "Hello", "Good day"],
+                                "responses": ["Hello, thanks for visiting", "Good to see you again", "Hi there, how can I help?"]
+                               },
+                               {"tag": "goodbye",
+                                "patterns": ["Bye", "See you later", "Goodbye"],
+                                "responses": ["See you later, thanks for visiting", "Have a nice day", "Bye! Come back again soon."]
+                               },
+                               {"tag": "thanks",
+                                "patterns": ["Thanks", "Thank you", "That's helpful"],
+                                "responses": ["Happy to help!", "Any time!", "My pleasure"]
+                               },
+                               {"tag": "hours",
+                                "patterns": ["What hours are you open?", "What are your hours?", "When are you open?" ],
+                                "responses": ["We're open every day 9am-9pm", "Our hours are 9am-9pm every day"]
+                               },
+                               {"tag": "1",
+                                "patterns": ["Do you take credit cards?", "Do you accept Mastercard?", "Are you cash only?" ],
+                                "responses": ["We accept VISA, Mastercard and AMEX", "We accept most major credit cards"]
+                               },
+                               {"tag": "2",
+                                "patterns": ["Are you open today?", "When do you open today?", "What are your hours today?"],
+                                "responses": ["We're open every day from 9am-9pm", "Our hours are 9am-9pm every day"]
+                               },
+                               {"tag": "3",
+                                       "patterns": ["How do i return order?"," what is the process to return my order"],
+                                       "responses": ["You can return it from orders place in the menu and we will send our delivery person to collect it."]
+                                      },
+                               {"tag": "4",
+                                       "patterns": ["what is the process to refund?","when will i get refund"],
+                                       "responses": ["once returned or canceled, we will initialise refund in 5-7 days to your purchased account"]
+                               },
+                               {
+                                       "tag": "5",
+                                       "patterns": ["what?"],
+                                       "responses": ["sorry, can't understand you. I ll join you to our helpline."]
+                               },
+                               {"tag": "6",
+                                       "patterns": ["How are you?" ],
+                                       "responses": ["I am fine"]
+                                      },
+                                      {"tag": "7",
+                                       "patterns": ["what are you doing"],
+                                       "responses": ["I'm trying to help  you out"]
+                                      },
+                                      {"tag": "8",
+                                              "patterns": ["Can i know my email address?"],
+                                              "responses": ["You can find it in my profile details' place."]
+                                             },
+                                      {"tag": "9",
+                                              "patterns": ["what is your name?"],
+                                              "responses": ["I'm suzanne,your help assistant right now"]
+                                      },
+                                      {
+                                              "tag": "10",
+                                              "patterns": ["what is your age?"],
+                                              "responses": ["I'm pretty old than i seem to be"]
+                                      },
+                                      {"tag": "greeting",
+                                        "patterns": ["Hi", "How are you", "Is anyone there?", "Hello", "Good day"],
+                                        "responses": ["Hello, thanks for visiting", "Good to see you again", "Hi there, how can I help?"]
+                                       },
+                                       {"tag": "goodbye",
+                                        "patterns": ["Bye", "See you later", "Goodbye"],
+                                        "responses": ["See you later, thanks for visiting", "Have a nice day", "Bye! Come back again soon."]
+                                       },
+                                       {"tag": "thanks",
+                                        "patterns": ["Thanks", "Thank you", "That's helpful"],
+                                        "responses": ["Happy to help!", "Any time!", "My pleasure"]
+                                       },
+                                       {"tag": "hours",
+                                        "patterns": ["What hours are you open?", "What are your hours?", "When are you open?" ],
+                                        "responses": ["We're open every day 9am-9pm", "Our hours are 9am-9pm every day"]
+                                       },
+                                       {"tag": "1",
+                                        "patterns": ["Do you take credit cards?", "Do you accept Mastercard?", "Are you cash only?" ],
+                                        "responses": ["We accept VISA, Mastercard and AMEX", "We accept most major credit cards"]
+                                       },
+                                       {"tag": "2",
+                                        "patterns": ["Are you open today?", "When do you open today?", "What are your hours today?"],
+                                        "responses": ["We're open every day from 9am-9pm", "Our hours are 9am-9pm every day"]
+                                       },
+                                       {"tag": "3",
+                                               "patterns": ["How do i return order?"," what is the process to return my order"],
+                                               "responses": ["You can return it from orders place in the menu and we will send our delivery person to collect it."]
+                                              },
+                                       {"tag": "4",
+                                               "patterns": ["what is the process to refund?","when will i get refund"],
+                                               "responses": ["once returned or canceled, we will initialise refund in 5-7 days to your purchased account"]
+                                       },
+                                       {
+                                               "tag": "5",
+                                               "patterns": ["what?"],
+                                               "responses": ["sorry, can't understand you. I ll join you to our helpline."]
+                                       },
+                                       {"tag": "6",
+                                               "patterns": ["How are you?" ],
+                                               "responses": ["I am fine"]
+                                              },
+                                              {"tag": "7",
+                                               "patterns": ["what are you doing"],
+                                               "responses": ["I'm trying to help  you out"]
+                                              },
+                                              {"tag": "8",
+                                                      "patterns": ["Can i know my email address?"],
+                                                      "responses": ["You can find it in my profile details' place."]
+                                                     },
+                                              {"tag": "9",
+                                                      "patterns": ["what is your name?"],
+                                                      "responses": ["I'm suzanne,your help assistant right now"]
+                                              },
+                                              {
+                                                      "tag": "10",
+                                                      "patterns": ["what is your age?"],
+                                                      "responses": ["I'm pretty old than i seem to be"]
+                                              },
+                                              {"tag": "greeting",
+                                                "patterns": ["Hi", "How are you", "Is anyone there?", "Hello", "Good day"],
+                                                "responses": ["Hello, thanks for visiting", "Good to see you again", "Hi there, how can I help?"]
+                                               },
+                                               {"tag": "goodbye",
+                                                "patterns": ["Bye", "See you later", "Goodbye"],
+                                                "responses": ["See you later, thanks for visiting", "Have a nice day", "Bye! Come back again soon."]
+                                               },
+                                               {"tag": "thanks",
+                                                "patterns": ["Thanks", "Thank you", "That's helpful"],
+                                                "responses": ["Happy to help!", "Any time!", "My pleasure"]
+                                               },
+                                               {"tag": "hours",
+                                                "patterns": ["What hours are you open?", "What are your hours?", "When are you open?" ],
+                                                "responses": ["We're open every day 9am-9pm", "Our hours are 9am-9pm every day"]
+                                               },
+                                               {"tag": "1",
+                                                "patterns": ["Do you take credit cards?", "Do you accept Mastercard?", "Are you cash only?" ],
+                                                "responses": ["We accept VISA, Mastercard and AMEX", "We accept most major credit cards"]
+                                               },
+                                               {"tag": "2",
+                                                "patterns": ["Are you open today?", "When do you open today?", "What are your hours today?"],
+                                                "responses": ["We're open every day from 9am-9pm", "Our hours are 9am-9pm every day"]
+                                               },
+                                               {"tag": "3",
+                                                       "patterns": ["How do i return order?"," what is the process to return my order"],
+                                                       "responses": ["You can return it from orders place in the menu and we will send our delivery person to collect it."]
+                                                      },
+                                               {"tag": "4",
+                                                       "patterns": ["what is the process to refund?","when will i get refund"],
+                                                       "responses": ["once returned or canceled, we will initialise refund in 5-7 days to your purchased account"]
+                                               },
+                                               {
+                                                       "tag": "5",
+                                                       "patterns": ["what?"],
+                                                       "responses": ["sorry, can't understand you. I ll join you to our helpline."]
+                                               },
+                                               {"tag": "6",
+                                                       "patterns": ["How are you?" ],
+                                                       "responses": ["I am fine"]
+                                                      },
+                                                      {"tag": "7",
+                                                       "patterns": ["what are you doing"],
+                                                       "responses": ["I'm trying to help  you out"]
+                                                      },
+                                                      {"tag": "8",
+                                                              "patterns": ["Can i know my email address?"],
+                                                              "responses": ["You can find it in my profile details' place."]
+                                                             },
+                                                      {"tag": "9",
+                                                              "patterns": ["what is your name?"],
+                                                              "responses": ["I'm suzanne,your help assistant right now"]
+                                                      },
+                                                      {
+                                                              "tag": "10",
+                                                              "patterns": ["what is your age?"],
+                                                              "responses": ["I'm pretty old than i seem to be"]
+                                                      }
    ]
 }
