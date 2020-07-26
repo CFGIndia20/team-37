@@ -4,7 +4,7 @@ import json
 from django.views.decorators.csrf import csrf_exempt
 # from chatbot.chatbot_model_runner import *
 from datetime import date
-from .forms import LoginForm, OptionForm, PatientForm
+from .forms import LoginForm, OptionForm, PatientForm,CheckoutForm
 
 import pyrebase
 #Session Variable
