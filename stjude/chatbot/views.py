@@ -3,7 +3,7 @@ from django.http import HttpResponse
 import json
 from django.views.decorators.csrf import csrf_exempt
 # from chatbot.chatbot_model_runner import *
-
+from datetime import date
 from .forms import LoginForm, OptionForm
 
 import pyrebase
@@ -85,6 +85,34 @@ def login(request):
     else:
         return render(request, 'login.html')
 
+#pending part has view-patient and urls.py updated.
+def view_patient(request):
+    #error part
+    patient_id=request['patient_id']
+    patients=db.child('patients').get().val()
+    required_patient_details={}
+    for k,patient in patients.items():
+        if patient["patient_id"]==request["patientid"]:
+            required_patient_details['phone']=patient["phone"]
+            required_patient_details['id']=patient["id"]
+            required_patient_details['enter_date']=patient["enterdate"]
+            required_patient_details['exit_date']=patient["exitdate"]
+            required_patient_details['name']=patient["name"]
+            break                  
+    return render(request, 'view_details',{'patient_details': required_patient_details})
+def checkout(request):
+    #error part
+    patient_id=request['patient_id']
+    patients_ref=db.child('patients').child('patient_id')
+    patients_ref.set({'exitdate':date.today()})
+    center_id=patients_ref.child('center_id')
+    center_ref=db.child('centers')
+    for cen in center_ref:
+        if cen.child("center_id")==centre_id:
+            for unit in cen.child("unit"):
+                if(unit==patient_id):
+                    cen.update({'unit':'A'})
+    return render(request, 'checkout_final')
 def optionChosen(request):
     if request.method == "POST":
         request.method = "GET"
@@ -116,18 +144,9 @@ def optionChosen(request):
             return render(request, 'add-patient.html',{'units' : unit})
         
         elif opt == "checkout":
-            unit = center_ref.child('center_id').child('unit').get().val()
-            return render(request, 'admin-options.html', {'units' : unit})
+            return render(request, 'checkout-patient.html')
         elif opt == "view":
-            unit = center_ref.child('center_id').child('unit').get().val()
-            unit = unit.values()    ### TO GET ONLY VALUE FROM KEY VALUE PAIR
-            patDist = {}
-            patients = db.child('patients').get().val()
-            for pat in patients:
-                temp = db.child('patients').child(pat).child('id').get().val()
-                if temp in unit:
-                    patDist[unit.index] = temp
-            return render(request, 'admin-options.html', {'units' : patDist.keys(), 'patients' : patDist.values()})
+            return render(request,'view-patient.html')
     else:
         return render(request, 'admin-options.html')
 
