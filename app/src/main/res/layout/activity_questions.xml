@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".Questions">
+
+    <TextView
+        android:id="@+id/tvQues1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Living Arrangements"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"/>
+
+    <com.hsalf.smilerating.SmileRating
+        android:id="@+id/smile_rating"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:showLine="true" />
+    <TextView
+        android:id="@+id/tvQues2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Kitchen Facilities"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"/>
+
+    <com.hsalf.smilerating.SmileRating
+        android:id="@+id/smile_rating2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:showLine="true" />
+    <TextView
+        android:id="@+id/tvQues3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Bathing Facilities"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"/>
+
+    <com.hsalf.smilerating.SmileRating
+        android:id="@+id/smile_rating3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:showLine="true" />
+    <TextView
+        android:id="@+id/tvQues4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Transport facilities"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"/>
+
+    <com.hsalf.smilerating.SmileRating
+        android:id="@+id/smile_rating4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:showLine="true" />
+
+    <TextView
+        android:id="@+id/tvQues5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Infection control"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"/>
+
+    <com.hsalf.smilerating.SmileRating
+        android:id="@+id/smile_rating5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:showLine="true" />
+    <TextView
+        android:id="@+id/tvQues6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Attitude of staff and other parents/children"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"/>
+
+    <com.hsalf.smilerating.SmileRating
+        android:id="@+id/smile_rating6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:showLine="true" />
+    <TextView
+        android:id="@+id/tvQues7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Atmosphere of the centre"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"/>
+
+    <com.hsalf.smilerating.SmileRating
+        android:id="@+id/smile_rating7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:showLine="true" />
+    <TextView
+        android:id="@+id/tvQues8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nutritional Supplements"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"/>
+
+    <com.hsalf.smilerating.SmileRating
+        android:id="@+id/smile_rating8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:showLine="true" />
+    <Button
+        android:id="@+id/btnSubmit"
+        android:background="#B50436"
+        android:textColor="#ffffff"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:padding="10dp"
+        />
+
+
+</LinearLayout>
+
+</ScrollView>
