@@ -5,6 +5,7 @@ from . import views
 urlpatterns = [
     path('', views.index, name='index'),
     path('login/', views.login),
+    path('chatbot/', views.chatbot),
     path('option-chosen/', views.optionChosen),
     path('admin-options/', views.optionChosen),
     path('get-response/', views.get_response, name='get_response'),
