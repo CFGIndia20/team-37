@@ -6,3 +6,6 @@ class LoginForm(forms.Form):
 
 class OptionForm(forms.Form):
     option = forms.CharField(max_length=20)
+
+class PatientForm(forms.Form):
+    patient_id = forms.CharField(max_length=20)

@@ -4,7 +4,7 @@ import json
 from django.views.decorators.csrf import csrf_exempt
 # from chatbot.chatbot_model_runner import *
 from datetime import date
-from .forms import LoginForm, OptionForm
+from .forms import LoginForm, OptionForm, PatientForm
 
 import pyrebase
 #Session Variable
@@ -67,17 +67,16 @@ def login(request):
         print(username,password)
 
         admins = db.child('admin').get().val()
-
-        print(admins)
         admins = dict(admins)
         for k,adm in admins.items():
 
             print(adm)
 
-            if adm["username"] == username and adm["password"] == password:
-                global session_username
-                session_username = username
+            if str(adm["username"]) == username and str(adm["password"]) == password:
+                # global session_username
+                # session_username = username
                 return render(request, 'admin-options.html')
+        
         return HttpResponse("<h5>Error<h5>")
         # global session_username
         # session_username = username
@@ -88,18 +87,24 @@ def login(request):
 #pending part has view-patient and urls.py updated.
 def view_patient(request):
     #error part
-    patient_id=request['patient_id']
+    pat = PatientForm(request.POST)
+    patient_id = pat.data['patient_id']
     patients=db.child('patients').get().val()
+    patients = dict(patients)
     required_patient_details={}
     for k,patient in patients.items():
-        if patient["patient_id"]==request["patientid"]:
+        if patient["id"]==int(patient_id):
             required_patient_details['phone']=patient["phone"]
             required_patient_details['id']=patient["id"]
             required_patient_details['enter_date']=patient["enterdate"]
             required_patient_details['exit_date']=patient["exitdate"]
             required_patient_details['name']=patient["name"]
-            break                  
-    return render(request, 'view_details',{'patient_details': required_patient_details})
+            break
+    
+    print(required_patient_details)
+
+    return render(request, 'view_details.html',{'patient_details': required_patient_details})
+
 def checkout(request):
     #error part
     patient_id=request['patient_id']
@@ -113,6 +118,8 @@ def checkout(request):
                 if(unit==patient_id):
                     cen.update({'unit':'A'})
     return render(request, 'checkout_final')
+
+
 def optionChosen(request):
     if request.method == "POST":
         request.method = "GET"
@@ -142,7 +149,6 @@ def optionChosen(request):
                 temp[k] = v
             unit = temp
             return render(request, 'add-patient.html',{'units' : unit})
-        
         elif opt == "checkout":
             return render(request, 'checkout-patient.html')
         elif opt == "view":

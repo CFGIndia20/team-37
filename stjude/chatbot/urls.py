@@ -10,5 +10,6 @@ urlpatterns = [
     path('admin-options/', views.optionChosen),
     path('get-response/', views.get_response, name='get_response'),
     path('view-patient/',views.view_patient),
+    # path('view-details/',views.view_patient),
     path('checkout-patient/',views.checkout)
 ]
