@@ -3,8 +3,8 @@ from django.http import HttpResponse
 import json
 from django.views.decorators.csrf import csrf_exempt
 # from chatbot.chatbot_model_runner import *
-
-from .forms import LoginForm, OptionForm
+from datetime import date
+from .forms import LoginForm, OptionForm, PatientForm,CheckoutForm
 
 import pyrebase
 #Session Variable
@@ -33,6 +33,9 @@ def index(request):
         return render(request, 'index.html', {'username': session_username})
     return render(request,'index.html',{'username':session_username})
 
+def chatbot(request):
+    return render(request, "home.html")
+
 @csrf_exempt
 def get_response(request):
     response = {'status': None}
@@ -40,7 +43,7 @@ def get_response(request):
     if request.method == 'POST':
         data = json.loads(request.body)
         message = data['message']
-        # print(message)
+        print(message)
 
         chat_response = chatbot_response(message)
         response['message'] = {'text': chat_response, 'user': False, 'chat_bot': True}
@@ -56,18 +59,80 @@ def get_response(request):
 
 #Login Form
 def login(request):
-    try:
+    if request.method == "POST":
         login_data = LoginForm(request.POST)
-        username = login_data.data['username']
+        username = login_data.data['login']
         password = login_data.data['password']
-        # user = get_object_or_404(User, username = username, password = password)
-        print(username)
-        global session_username
-        session_username = username
-        # return redirect(to='http://127.0.0.1:8000/')
-        return redirect(to='http://127.0.0.1:8000/admin-option')
-    except:
-        return render(request, 'e403.html')
+
+        print(username,password)
+
+        admins = db.child('admin').get().val()
+        admins = dict(admins)
+        for k,adm in admins.items():
+
+            print(adm)
+
+            if str(adm["username"]) == username and str(adm["password"]) == password:
+                # global session_username
+                # session_username = username
+                return render(request, 'loggedin.html')
+
+        donor = db.child('donor').get().val()
+        donor = dict(donor)
+        for k,don in donor.items():
+            if str(don["username"]) == username and str(don["password"]) == password:
+                # global session_username
+                # session_username = username
+                # return render(request, 'admin-options.html')
+                return HttpResponse("<h1>HI</h1>")
+        
+        return HttpResponse("<h1>Error<h1>")
+        # global session_username
+        # session_username = username
+        # return redirect(to='http://127.0.0.1:8000/admin-option')
+    else:
+        return render(request, 'login.html')
+
+#pending part has view-patient and urls.py updated.
+def view_patient(request):
+    #error part
+    pat = PatientForm(request.POST)
+    patient_id = pat.data['patient_id']
+    patients=db.child('patients').get().val()
+    patients = dict(patients)
+    required_patient_details={}
+    for k,patient in patients.items():
+        if patient["id"]==int(patient_id):
+            required_patient_details['phone']=patient["phone"]
+            required_patient_details['id']=patient["id"]
+            required_patient_details['enter_date']=patient["enterdate"]
+            required_patient_details['exit_date']=patient["exitdate"]
+            required_patient_details['name']=patient["name"]
+            break
+    
+    print(required_patient_details)
+
+    return render(request, 'view_details.html',{'patient_details': required_patient_details})
+
+def checkout(request):
+    #error part
+    pat = CheckoutForm(request.POST)
+    patient_id = pat.data['patient_id']
+    patients_ref=db.child('patients').get().val()
+    center_id=-1
+    for patient in patients_ref:
+        if(patient["id"]==patient_id):
+            db.child('patients').update({patient+'/exitdate':date.today()})
+            center_id=patient['center_id']
+            break
+    center_ref=db.child('centers').get().val()
+    for cen in center_ref:
+        if db.child("centers").child("center_id")==center_id:
+            for unit in db.child("centers").child("unit"):
+                if(unit==patient_id):
+                    cen.update({'unit':'A'})
+    return render(request, 'checkout_final')
+
 
 def optionChosen(request):
     if request.method == "POST":
@@ -91,19 +156,6 @@ def optionChosen(request):
                 cent = cen
                 break
         print(cent)
-        # for adm in admins:
-        #     print(adm)
-        #     temp = db.child('admin').child(adm)
-        #     if temp.child('admin_id').get().val() == 1:
-        #         center_id = temp.child('center_id').get().val()
-        #         break
-        # print(center_id)
-        # centers = db.child('centers').get().val()
-        # center_ref = -1
-        # for cen in centers:
-        #     center_ref = db.child('centers').child(cen)
-        #     if center_ref.child('center_id').get().val() == center_id:
-        #         break
         if opt == "add":
             unit = cent["unit"]
             temp = {}
@@ -111,23 +163,12 @@ def optionChosen(request):
                 temp[k] = v
             unit = temp
             return render(request, 'add-patient.html',{'units' : unit})
-        
         elif opt == "checkout":
-            unit = center_ref.child('center_id').child('unit').get().val()
-            return render(request, 'admin-options.html', {'units' : unit})
+            return render(request, 'checkout-patient.html')
         elif opt == "view":
-            unit = center_ref.child('center_id').child('unit').get().val()
-            unit = unit.values()    ### TO GET ONLY VALUE FROM KEY VALUE PAIR
-            patDist = {}
-            patients = db.child('patients').get().val()
-            for pat in patients:
-                temp = db.child('patients').child(pat).child('id').get().val()
-                if temp in unit:
-                    patDist[unit.index] = temp
-            return render(request, 'admin-options.html', {'units' : patDist.keys(), 'patients' : patDist.values()})
+            return render(request,'view-patient.html')
     else:
         return render(request, 'admin-options.html')
 
-
-
-
+# def loginPage(request):
+#     return render(request, 'login.html')

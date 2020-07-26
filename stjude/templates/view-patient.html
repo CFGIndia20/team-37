@@ -1,0 +1,9 @@
+<html>
+    <body>
+        <form method="POST" action="http://127.0.0.1:8000/view-patient/">{% csrf_token %}
+            <input id="patient_id" name="patient_id" placeholder="enter patient id"> 
+        </input>
+        <input type="submit">Submit</input>
+        </form>
+    </body>
+</html>
