@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Feedbackcfg</string>
+    <string name="question1">रहने की व्यवस्था</string>
+    <string name="question2">"रसोई की सुविधा "</string>
+    <string name="question3">"नहाने की सुविधा "</string>
+    <string name="question4">"परिवहन सुविधाएं "</string>
+    <string name="question5">"रोग नियंत्रण "</string>
+    <string name="question6">"स्टाफ और अन्य माता-पिता / बच्चों का रवैया "</string>
+    <string name="question7">"केंद्र का माहौल "</string>
+    <string name="question8">"पोषण का पूरक "</string>
+    <string name="terrible">भयानक</string>
+    <string name="bad">ख़राब</string>
+    <string name="ok">ठीक</string>
+    <string name="good">अच्छा</string>
+    <string name="great">बोहोत अच्छा</string>
+</resources>

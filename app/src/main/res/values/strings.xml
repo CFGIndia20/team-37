@@ -1,3 +1,18 @@
 <resources>
-    <string name="app_name">Feedbackcfg</string>
+    <string name="app_name" translatable="false">Feedbackcfg</string>
+    <string name="question1">Living Arrangements</string>
+    <string name="question2">Kitchen Facilities</string>
+    <string name="question3">Bathing Facilities</string>
+    <string name="question4">Transport Facilities</string>
+    <string name="question5">Infection Control</string>
+    <string name="question6">Attitude of Staff and Other Parents/Children</string>
+    <string name="question7">Atmosphere of the centre</string>
+    <string name="question8">Nutritional Supplements</string>
+    <string name="terrible">Terrible</string>
+    <string name="bad">Bad</string>
+    <string name="ok">Okay</string>
+    <string name="good">Good</string>
+    <string name="great">Great</string>
+
+
 </resources>
