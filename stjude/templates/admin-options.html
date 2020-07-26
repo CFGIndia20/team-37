@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+
+	<link href="//fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <form action="http://127.0.0.1:8000/option-chosen/" method="post">{% csrf_token %}
+        <input type="submit" name="opt" value="add">Add Patient</input>
+        <input type="submit" name="opt" value="checkout">Checkout</input>
+        <input type="submit" name="opt" value="view">View Unit</input>
+        <input type="submit" name="opt" value="feedback">Edit Feedback</input>
+    </form>
+    <!-- <a href="http://127.0.0.1:8000/option-chosen">Add Patient</a>
+    <a href="http://127.0.0.1:8000/option-chosen">Checkout</a>
+    <a href="http://127.0.0.1:8000/option-chosen">View Unit</a>
+    <a href="http://127.0.0.1:8000/option-chosen">Edit Feedback</a> -->
+</body>
+
+</html>

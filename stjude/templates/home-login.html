@@ -1,1 +1,46 @@
-<form
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+
+	<link href="//fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+</head>
+
+
+{% if username == '' %}
+<body>
+<div class="signupform">
+	<div class="container">
+		<!-- main content -->
+		<div class="agile_info">
+
+			<div class="w3_info">
+				<h2>Login To Your Account</h2>
+				<p>Enter your details to login.</p>
+				<form action="http://127.0.0.1:8000/login/" method="post">{% csrf_token %}
+					<label>Email Address</label>
+					<div class="input-group">
+						<span class="fa fa-envelope" aria-hidden="true"></span>
+						<input type="email" placeholder="Enter Your Email" name = 'username' required="">
+					</div>
+					<label>Password</label>
+					<div class="input-group">
+						<span class="fa fa-lock" aria-hidden="true"></span>
+						<input type="Password" placeholder="Enter Password" name = 'password' required="">
+					</div>
+						<button class="btn btn-danger btn-block" type="submit">Login</button >
+				</form>
+				<p class="account1">Don't have an account? <a href="http://127.0.0.1:8000/form-register/">Register here</a></p>
+                <p class="account1">Don't remember your password? <a href="http://127.0.0.1:8000/form-forgot-password/">Forgot Password</a></p>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+{% else %}
+{% endif %}
+</html>
