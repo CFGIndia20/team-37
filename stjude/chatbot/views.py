@@ -4,7 +4,7 @@ import json
 from django.views.decorators.csrf import csrf_exempt
 # from chatbot.chatbot_model_runner import *
 from datetime import date
-from .forms import LoginForm, OptionForm, PatientForm
+from .forms import LoginForm, OptionForm, PatientForm,CheckoutForm
 
 import pyrebase
 #Session Variable
@@ -116,14 +116,19 @@ def view_patient(request):
 
 def checkout(request):
     #error part
-    patient_id=request['patient_id']
-    patients_ref=db.child('patients').child('patient_id')
-    patients_ref.set({'exitdate':date.today()})
-    center_id=patients_ref.child('center_id')
-    center_ref=db.child('centers')
+    pat = CheckoutForm(request.POST)
+    patient_id = pat.data['patient_id']
+    patients_ref=db.child('patients').get().val()
+    center_id=-1
+    for patient in patients_ref:
+        if(patient["id"]==patient_id):
+            db.child('patients').update({patient+'/exitdate':date.today()})
+            center_id=patient['center_id']
+            break
+    center_ref=db.child('centers').get().val()
     for cen in center_ref:
-        if cen.child("center_id")==centre_id:
-            for unit in cen.child("unit"):
+        if db.child("centers").child("center_id")==center_id:
+            for unit in db.child("centers").child("unit"):
                 if(unit==patient_id):
                     cen.update({'unit':'A'})
     return render(request, 'checkout_final')

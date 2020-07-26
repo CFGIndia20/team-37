@@ -9,3 +9,5 @@ class OptionForm(forms.Form):
 
 class PatientForm(forms.Form):
     patient_id = forms.CharField(max_length=20)
+class CheckoutForm(forms.Form):
+    patient_id=forms.CharField(max_length=30)
